@@ -1,0 +1,16 @@
+<h1>Welcome to the "<%= @restaurant.name %>"</h1>
+<li><%= @restaurant.name %></li>
+<li><%= @restaurant.category%></li>
+<li><%= @restaurant.address%></li>
+<li><%= @restaurant.phone_number%></li>
+<p>Reviews!</p>
+<% @reviews.each do |review| %>
+<p> <%= review.content %>
+<%= review.created_at.strftime("%A, %b %d") %>
+</p>
+<% end %>
+
+<p><%= link_to "Edit this Restaurant", edit_restaurant_path %></%></p>
+<p><%= link_to "List of restaurants", restaurants_path %></%></p>
+<p><%= link_to "Review this Restaurant!", new_restaurant_review_path(@restaurant) %></%></p>
+<p><%= link_to "Destroy restaurant", restaurant_path(@restaurant), method: :delete, data: {confirm: 'are you sure?'}%></p>
